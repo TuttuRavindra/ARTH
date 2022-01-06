@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll",
-    "dev-test": "nodemon test.js",
-    "start": "node index.js",
-    "dev-peer": "cross-env GENERATE_PEER_PORT='true' nodemon index.js",
-    "dev": "nodemon index.js"
+    "start": "node ./Api",
+    "dev": "nodemon ./Api"
   },
   "author": "Kilwish",
   "license": "ISC",
@@ -18,7 +16,7 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.19.1",
     "crypto-js": "^4.1.1",
     "express": "^4.17.2",
     "hex-to-binary": "^1.0.1",
