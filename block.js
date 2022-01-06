@@ -18,6 +18,21 @@ class Block{
 
     }
 
+    static genesis(){
+        return new this('genesis timestamp','genesis hash','genesis last hash','genesis data', 'genesis nonce','genesis difficulty');
+    }
+
+    static mineBlock(lastBlock,Data){
+
+        const timestamp = Date.now();
+        const lastHash = lastBlock.hash;
+        const hash = 'dummy generated hash for the current block';
+
+
+        return new this(timestamp,hash,lastHash,Data);
+
+    }
+
     toString(){
         return `Block -
 
