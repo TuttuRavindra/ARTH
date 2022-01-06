@@ -1,6 +1,38 @@
 // const Genesis = require('./genesis');
 // const MineBlock = require('./mineBlock');
 // const cryptoHash = require('./cryto-hash');
+const Block = require('./block');
+
+class BlockChain{
+    
+        constructor(){
+            this.chain = [Block.genesis()];
+        }
+
+        addBlock(data){
+            const block = Block.mineBlock(this.chain[this.chain.length-1],data);
+            this.chian.push(block);
+            return block;
+        }
+
+        isValidChain(chain){
+            if(JSON.stringify(chain[0]) !== JSON.stringify(BLock.genesis())) return false;
+
+            for (let i =1; i<chain.length;i++){
+                const block =chain[i];
+                const lastBlock = chain[i-1]; 
+
+                if(block.lastHash !== lastBlock.hash || block.hash !== Block.blockHash(block)){
+                    return false
+                }
+            }
+
+            return true;
+
+        }
+        
+
+    }
 
 // class BlockChain{
     
@@ -76,4 +108,4 @@
 
 
 
-// module.exports = BlockChain;
+module.exports = BlockChain;

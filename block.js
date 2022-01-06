@@ -29,14 +29,21 @@ class Block{
         const timestamp = Date.now();
         const lastHash = lastBlock.hash;
         const hash = Block.hash(lastHash,lastHash,Data);
-
-
         return new this(timestamp,hash,lastHash,Data);
 
     }
 
     static hash(timestamp,lasthash,data){
+
         return SHA256(`${timestamp}${lasthash}${data}`).toString();
+
+    }
+
+    static blockHash(block){
+
+        const {timeStamp,lastHash,data} = block ;
+        return Block.hash(timeStamp,lastHash,data);
+
     }
 
 
@@ -45,15 +52,10 @@ class Block{
         return `Block -
 
             Timestamp :${this.timeStamp}
-
             Last Hash :${this.lashHash}
-
             Hash      :${this.hash}
-
             Data      :${this.data}
-
             Difficulty:${this.difficulty}
-            
             Nonce     :${this.nonce}  
             
             `;
