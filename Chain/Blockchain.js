@@ -5,6 +5,7 @@ const { cryptoHash } = require('./cryptoHash');
 // const { REWARD_INPUT, MINING_REWARD } = require('../config');
 
 class Blockchain {
+
   constructor() {
     this.chain = [Block.genesis()];
   }
@@ -18,7 +19,7 @@ class Blockchain {
     this.chain.push(newBlock);
   }
 
-  replaceChain(chain, validateTransactions, onSuccess) {
+  replaceChain(chain) {
     if (chain.length <= this.chain.length) {
       console.error('The incoming chain must be longer');
       return;
