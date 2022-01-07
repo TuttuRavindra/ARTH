@@ -1,4 +1,5 @@
 const SHA256 = require('crypto-js/sha256');
+const { GENESIS_DATA } = require('./config');
 
 //Description--->> BLOCK-CLASS
 class Block{
@@ -19,6 +20,10 @@ class Block{
         
         this.difficulty = difficulty;
 
+    }
+
+    static genesis() {
+        return new Block(GENESIS_DATA);
     }
 
     // static genesis(){
