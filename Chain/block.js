@@ -3,7 +3,8 @@ const SHA256 = require('crypto-js/sha256');
 //Description--->> BLOCK-CLASS
 class Block{
     
-    //Description--->> TIMESTAMP,HASH,LASTHASH,DATA
+    //Description--->> TIMESTAMP, HASH, LASTHASH, DATA, NONCE, DIFFICULTLY
+    //Description--->> This creates an object with the above values.
     constructor({timeStamp,hash,lashHash,data,nonce, difficulty}){
 
         this.timeStamp = timeStamp;
