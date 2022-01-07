@@ -6,7 +6,7 @@ class Block{
     
     //Description--->> TIMESTAMP, HASH, LASTHASH, DATA, NONCE, DIFFICULTLY
     //Description--->> This creates an object with the above values.
-    constructor({timeStamp,hash,lashHash,data,nonce, difficulty}){
+    constructor({timeStamp,lashHash,hash,data,nonce, difficulty}){
 
         this.timeStamp = timeStamp;
 
