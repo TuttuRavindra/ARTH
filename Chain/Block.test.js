@@ -1,6 +1,7 @@
 const Block = require('./block');
 const { GENESIS_DATA } = require('./config');
 
+//Description--->> Test 1.
 describe('Block',()=>{
     
         const timeStamp = 2000;
@@ -9,6 +10,8 @@ describe('Block',()=>{
         const data = ['blockchain', 'data'];
         const nonce = 1;
         const difficulty = 1;
+
+        //Explanation--->>>Create a block with the above data from testing
         const block = new Block({ timeStamp, lastHash, hash, data, nonce, difficulty });
 
         it('TimeStamp test for the block', () => {
@@ -48,6 +51,6 @@ describe('genesis()', () => {
     });
 
     it('returns the genesis data', () => {
-      expect(genesisBlock).toEqual(GENESIS_DATA);
+      expect(genesisBlock).toEqual({GENESIS_DATA});
     });
   });

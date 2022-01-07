@@ -1,71 +1,40 @@
-const SHA256 = require('crypto-js/sha256');
 const { GENESIS_DATA } = require('./config');
 
 //Description--->> BLOCK-CLASS
 class Block{
+
     
     //Description--->> TIMESTAMP, HASH, LASTHASH, DATA, NONCE, DIFFICULTLY
     //Description--->> This creates an object with the above values.
-    constructor({timeStamp,lashHash,hash,data,nonce, difficulty}){
-
-        this.timeStamp = timeStamp;
-
-        this.hash = hash;
-
-        this.lashHash = lashHash;
+    //Explanation--->>>Constructor which initialized the below object with Block Parameters
+    constructor({timeStamp,lastHash,hash,data,nonce, difficulty}){
         
+        //Explanation--->>>timeStamp is the time at which the transaction has to be performed for a particular entity.
+        this.timeStamp = timeStamp;
+        
+        //Explanation--->>>lastHash is the hash code for the last blocks transaction.
+        this.lastHash = lastHash;
+        
+        //Explanation--->>>hash is the unique hash code generated for the current transaction.
+        this.hash = hash;
+        
+        //Explanation--->>>data is the actual amount of information which has to be processed/registered in the Block.
         this.data = data;
         
+        //Explanation--->>>TBD.
         this.nonce = nonce;
         
+        //Explanation--->>>difficulty is the rate at which the miner should be able to mine the block, if more hash power is added to the network then the difficulty has to be increased in order to maintain the rate of block transaction. 
         this.difficulty = difficulty;
-
+        
     }
-
+    
+    //Description--->> genesis is the first block and has the data predefined by the developer of the Blockchain
     static genesis() {
-        return new Block(GENESIS_DATA);
+
+        //Explanation--->>>Returns a new block and this block can be considered as the first block in the Block chain.
+        return new Block({GENESIS_DATA});
     }
-
-    // static genesis(){
-    //     return new this('genesis timestamp','genesis hash','genesis last hash','genesis data', 'genesis nonce','genesis difficulty');
-    // }
-
-    // static mineBlock(lastBlock,Data){
-
-    //     const timestamp = Date.now();
-    //     const lastHash = lastBlock.hash;
-    //     const hash = Block.hash(lastHash,lastHash,Data);
-    //     return new this(timestamp,hash,lastHash,Data);
-
-    // }
-
-    // static hash(timestamp,lasthash,data){
-
-    //     return SHA256(`${timestamp}${lasthash}${data}`).toString();
-
-    // }
-
-    // static blockHash(block){
-
-    //     const {timeStamp,lastHash,data} = block ;
-    //     return Block.hash(timeStamp,lastHash,data);
-
-    // }
-
-
-
-    // toString(){
-    //     return `Block -
-
-    //         Timestamp :${this.timeStamp}
-    //         Last Hash :${this.lashHash}
-    //         Hash      :${this.hash}
-    //         Data      :${this.data}
-    //         Difficulty:${this.difficulty}
-    //         Nonce     :${this.nonce}  
-            
-    //         `;
-    // }
 
 }
 
