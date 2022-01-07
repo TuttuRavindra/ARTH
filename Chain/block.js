@@ -29,13 +29,19 @@ class Block{
         
     }
     
-    //Description--->> genesis is the first block and has the data predefined by the developer of the Blockchain
+    //Description--->> genesis is the first block and has the data predefined by the developer of the Blockchain.
     static genesis() {
 
         //Explanation--->>>Returns a new block and this block can be considered as the first block in the Block chain.
         return new Block({GENESIS_DATA});
     }
+    
+    //Description--->> mineBlock creates the object for the block class with the values provided by the user.
+    static mineBlock({lastBlock,data}) {
 
+        //Explanation--->>>Returns a new block and this block can be considered as the first block in the Block chain.
+        return new Block({timeStamp : Date.now(),lastHash:lastBlock.hash,hash:'dsasdsd',data:data,nonce:'dsafffs',difficulty:1});
+    }
 }
 
 module.exports = Block;
