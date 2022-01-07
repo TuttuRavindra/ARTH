@@ -1,4 +1,5 @@
 const { GENESIS_DATA } = require('./config');
+const cryptoHash = require('./cryptoHash');
 
 //Description--->> BLOCK-CLASS
 class Block{
@@ -40,7 +41,7 @@ class Block{
     static mineBlock({lastBlock,data}) {
 
         //Explanation--->>>Returns a new block and this block can be considered as the first block in the Block chain.
-        return new Block({timeStamp : Date.now(),lastHash:lastBlock.hash,hash:'dsasdsd',data:data,nonce:'dsafffs',difficulty:1});
+        return new Block({timeStamp : Date.now(),lastHash:lastBlock.hash,hash:cryptoHash(timeStamp,lastHash,data),data:data,nonce:'dsafffs',difficulty:1});
     }
 }
 
