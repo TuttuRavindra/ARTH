@@ -1,7 +1,7 @@
 {
   "name": "arth",
   "version": "1.0.0",
-  "description": "ppls platform ",
+  "description": "ppls platform",
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll",
