@@ -1,9 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const BlockChain = require('../Chain/blockchain');
 const P2pServer = require('./p2p-server');
-const P2pServer = require('./p2p-server');
+
 
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
 
@@ -22,6 +21,8 @@ app.get('/blocks',(req,res)=>{
 app.post('/mine',(req,res)=>{
     const block = bc.addBlock();
     console.log(`New Block was added:${block.toString()}`);
+
+    P2pServer.syncChain();
     
     res.redirect('/blocks');
 
