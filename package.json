@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watchAll",
     "start": "node ./api/index.js",
-    "dev": "nodemon ./Api"
+    "dev": "nodemon ./api/index.js"
   },
   "author": "Kilwish",
   "license": "ISC",

@@ -12,13 +12,14 @@ app.get('api/blocks',(req,res)=>{
     res.json(blockchain.chain);
 });
 
-// app.post('/mine',(req,res)=>{
-//     const block = bc.addBlock();
-//     console.log(`New Block was added:${block.toString()}`);
+app.post('api/mine',(req,res)=>{
+    const {data} = req.body;
 
-//     P2pServer.syncChain();
+    const block = blockchain.addBlock({data});
+
+    // console.log(`New Block was added:${block.toString()}`);
     
-//     res.redirect('/blocks');
+    res.redirect('api/blocks');
 
 // });
 const PORT =3000;
