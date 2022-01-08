@@ -40,16 +40,21 @@ class Block{
     
     //Description--->> mineBlock creates the object for the block class with the values provided by the user.
     static mineBlock({lastBlock,data}) {
-        let hash,timestamp;
         const lastHash = lastBlock.hash;
+        let hash,timeStamp;
         const {difficulty} = lastBlock;
-        // const hash = cryptoHash(timeStamp,lastHash,data,nonce,difficulty);
         let nonce =0;
 
         do{
-            nonce++;
+
+        nonce++;
+
         timeStamp = Date.now();
+
+        difficulty = Block.adjustDifficulty({orignalBlock:lastBlock,timeStamp});
+        
         hash = cryptoHash(timeStamp,lastHash,data,nonce,difficulty);
+        
         }while(hash.substring(0,difficulty)!='0'.repeat(difficulty));
 
         //Explanation--->>>Returns a new block and this block can be considered as the first block in the Block chain.
