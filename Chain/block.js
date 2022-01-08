@@ -1,5 +1,6 @@
 const { GENESIS_DATA ,MINE_RATE} = require('./config');
 const cryptoHash = require('./cryptoHash');
+const hexToBinary = require('./hex-to-binary');
 
 //Description--->> BLOCK-CLASS
 class Block{
@@ -55,7 +56,7 @@ class Block{
         
         hash = cryptoHash(timeStamp,lastHash,data,nonce,difficulty);
         
-        }while(hash.substring(0,difficulty)!='0'.repeat(difficulty));
+        }while(hexToBinary(hash).substring(0,difficulty)!='0'.repeat(difficulty));
 
         //Explanation--->>>Returns a new block and this block can be considered as the first block in the Block chain.
         return new Block({
