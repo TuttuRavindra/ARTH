@@ -6,6 +6,8 @@ const CHANNELS = {
     TRANSACTION: 'TRANSACTION'
   };
 
+
+
 class pubSub{
     constructor({blockchain}){
 
@@ -49,7 +51,11 @@ class pubSub{
     }
 
     publish({channel,message}){
-        this.publisher.publish(channel,message);
+        this.subscriber.unsubscribe(channel,()=>{
+            this.publisher.publish(channel,message,()=>{
+                this.subscriber.subscribe(channel);
+            });
+        });   
     }
 
     broadcastChain() {
