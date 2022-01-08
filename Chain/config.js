@@ -1,3 +1,5 @@
+const MINE_RATE = 1000;
+
 const INITIAL_DIFFICULTY = 3;
 
 //Explanation--->>>Initial genesis block values are defined below.
@@ -10,4 +12,4 @@ const GENESIS_DATA = {
     data: []
   };
 
-module.export = GENESIS_DATA;
+module.export = GENESIS_DATA,MINE_RATE;
