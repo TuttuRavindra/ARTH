@@ -41,9 +41,13 @@ class Block{
     
     //Description--->> mineBlock creates the object for the block class with the values provided by the user.
     static mineBlock({lastBlock,data}) {
+
         const lastHash = lastBlock.hash;
+        
         let hash,timeStamp;
+        
         const {difficulty} = lastBlock;
+        
         let nonce =0;
 
         do{
