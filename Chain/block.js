@@ -8,7 +8,7 @@ class Block{
     //Description--->> TIMESTAMP, HASH, LASTHASH, DATA, NONCE, DIFFICULTLY
     //Description--->> This creates an object with the above values.
     //Explanation--->>>Constructor which initialized the below object with Block Parameters
-    constructor({timeStamp,lastHash,hash,data}){
+    constructor({timeStamp,lastHash,hash,data,nonce,difficulty}){
         
         //Explanation--->>>timeStamp is the time at which the transaction has to be performed for a particular entity.
         this.timeStamp = timeStamp;
@@ -22,11 +22,11 @@ class Block{
         //Explanation--->>>data is the actual amount of information which has to be processed/registered in the Block.
         this.data = data;
         
-        // //Explanation--->>>TBD.
-        // this.nonce = nonce;
+        //Explanation--->>>TBD.
+        this.nonce = nonce;
         
-        // //Explanation--->>>difficulty is the rate at which the miner should be able to mine the block, if more hash power is added to the network then the difficulty has to be increased in order to maintain the rate of block transaction. 
-        // this.difficulty = difficulty;
+        //Explanation--->>>difficulty is the rate at which the miner should be able to mine the block, if more hash power is added to the network then the difficulty has to be increased in order to maintain the rate of block transaction. 
+        this.difficulty = difficulty;
         
     }
     
@@ -40,13 +40,26 @@ class Block{
     
     //Description--->> mineBlock creates the object for the block class with the values provided by the user.
     static mineBlock({lastBlock,data}) {
+        let hash,timestamp;
+        const lastHash = lastBlock.hash;
+        const {difficulty} = lastBlock;
+        // const hash = cryptoHash(timeStamp,lastHash,data,nonce,difficulty);
+        let nonce =0;
+
+        do{
+            nonce++;
+        timeStamp = Date.now();
+        hash = cryptoHash(timeStamp,lastHash,data,nonce,difficulty);
+        }while(hash.substring(0,difficulty)!='0'.repeat(difficulty));
 
         //Explanation--->>>Returns a new block and this block can be considered as the first block in the Block chain.
         return new Block({
-            timeStamp : Date.now(),
-            lastHash:lastBlock.hash,
-            hash:cryptoHash(timeStamp,lastHash,data),
-            data:data
+            timeStamp,
+            lastHash,
+            hash,
+            data,
+            difficulty,
+            nonce
         });
 
     }
