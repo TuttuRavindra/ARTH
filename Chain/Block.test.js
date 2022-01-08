@@ -1,5 +1,5 @@
 const Block = require('./block');
-const { GENESIS_DATA } = require('../utility/config');
+const { GENESIS_DATA } = require('../config');
 
 //Description--->>> Test 1.
 //Explanation--->>> This tests the block class
